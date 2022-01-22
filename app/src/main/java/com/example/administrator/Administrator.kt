@@ -3,6 +3,7 @@ package com.example.administrator
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 
 class Administrator : AppCompatActivity() {
@@ -25,7 +26,10 @@ class Administrator : AppCompatActivity() {
 
         val buttonSearchUser : Button = findViewById(R.id.buttonSearchUser)
         buttonSearchUser.setOnClickListener {
+            val token = intent.getStringExtra("token")
+            Log.i(javaClass.simpleName, "token by getStringExtra: $token")
             val intent = Intent(this,AdminUserAccountSearch::class.java)
+            intent.putExtra("token", token)
             startActivity(intent)
         }
 

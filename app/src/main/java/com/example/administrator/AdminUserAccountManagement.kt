@@ -11,6 +11,8 @@ class AdminUserAccountManagement : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_user_account_management)
         //view
+
+
         val buttonHome : Button = findViewById(R.id.buttonHome)
         buttonHome.setOnClickListener {
             val intent = Intent(this,Administrator::class.java)
@@ -19,7 +21,6 @@ class AdminUserAccountManagement : AppCompatActivity() {
 
         val Ban : Button = findViewById(R.id.Ban)
 
-        val multiAutoCompleteTextView : TextView = findViewById(R.id.multiAutoCompleteTextView)
     }
 
 }
