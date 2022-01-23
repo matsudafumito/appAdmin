@@ -48,7 +48,7 @@ class AdminUserAccountManagement : AppCompatActivity() {
         etxtUserGender.setText(currentGender)
         etxtUserEmail.setText(currentEmail)
         etxtUserAddress.setText(currentAddress)
-        etxtUserCancel.setText(currentCancel)
+        etxtUserCancel.setText(currentCancel.toString())
 
         Ban.setOnClickListener {
 
