@@ -14,7 +14,7 @@ import java.net.URI
 
 class AdminUserAccountManagement : AppCompatActivity() {
     companion object{
-        const val getUserInfoId: Int = 4
+        const val getUserInfoId: Int = 5
     }
 
     private val uri = WsClient.serverRemote
@@ -23,6 +23,7 @@ class AdminUserAccountManagement : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_user_account_management)
+        client.connect()
         //view
         val buttonHome : Button = findViewById(R.id.buttonHome)
         buttonHome.setOnClickListener {
@@ -45,7 +46,7 @@ class GetUserInfo(private val activity: Activity, uri: URI) : WsClient(uri){
     var numViciousCancels = ""
     var isReceived = false
 
-    //private val errorDisplay: TextView by lazy { activity.findViewById(R.id.errorDisplay) }
+    private val errorDisplay: TextView by lazy { activity.findViewById(R.id.errorDisplay) }
     private val txtUserName: TextView by lazy { activity.findViewById(R.id.textBoxUserName) }
     private val txtBirthDay: TextView by lazy { activity.findViewById(R.id.textBoxUserBirthday) }
     private val txtGender: TextView by lazy { activity.findViewById(R.id.textBoxUserGender) }
@@ -63,7 +64,7 @@ class GetUserInfo(private val activity: Activity, uri: URI) : WsClient(uri){
         val result: JSONObject = wholeMsg.getJSONObject("result")
         val status: String = result.getString("status")
 
-        if(resId == AdminUserAccountManagement.getUserInfoId){
+        if(resId == AdminUserAccountSearch.getUserInfoId){
             this.isReceived = true
             if(status == "success"){
                 this.userId = result.getInt("user_id")
@@ -84,8 +85,8 @@ class GetUserInfo(private val activity: Activity, uri: URI) : WsClient(uri){
                 }
             }else if(status == "error"){
                 activity.runOnUiThread{
-                    //errorDisplay.text = "アカウント情報を取得できません"
-                    //errorDisplay.visibility = View.INVISIBLE
+                    errorDisplay.text = "アカウント情報を取得できません"
+                    errorDisplay.visibility = View.INVISIBLE
                 }
             }
         }
