@@ -18,7 +18,7 @@ import kotlin.concurrent.schedule
 class AdminUserAccountSearch : AppCompatActivity() {
 
     companion object{
-        const val getUserInfoId: Int = 4
+        const val getUserInfoId: Int = 5
         var token = ""
     }
 
@@ -86,7 +86,7 @@ class GetUserInfoWsClient(private val activity: Activity, uri: URI) : WsClient(u
 
         if(resId == AdminUserAccountSearch.getUserInfoId){
             if(status == "success"){
-                val intent = Intent(activity, AdminRestaurantAccountManagement::class.java)
+                val intent = Intent(activity, AdminUserAccountManagement::class.java) //画面遷移
                 intent.putExtra("userId", result.getInt("user_id"))
                 intent.putExtra("userName", result.getString("user_name"))
                 intent.putExtra("birthday", result.getString("birthday"))
