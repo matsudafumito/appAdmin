@@ -29,7 +29,6 @@ class AdminUserAccountManagement : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         val Ban : Button = findViewById(R.id.Ban)
-        val currentUserId = intent.getIntExtra("userId", 0)
         val currentUserName = intent.getStringExtra("userName")
         val currentBirthday = intent.getStringExtra("birthday")
         val currentGender = intent.getStringExtra("gender")
