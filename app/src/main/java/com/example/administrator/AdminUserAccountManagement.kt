@@ -25,19 +25,17 @@ class AdminUserAccountManagement : AppCompatActivity() {
             val intent = Intent(this,Administrator::class.java)
             startActivity(intent)
         }
-
-        val Ban : Button = findViewById(R.id.Ban)
-
     }
     override fun onResume() {
         super.onResume()
+        val Ban : Button = findViewById(R.id.Ban)
         val currentUserId = intent.getIntExtra("userId", 0)
         val currentUserName = intent.getStringExtra("userName")
         val currentBirthday = intent.getStringExtra("birthday")
         val currentGender = intent.getStringExtra("gender")
         val currentEmail = intent.getStringExtra("emailAddr")
         val currentAddress = intent.getStringExtra("address")
-        val currentCancel = intent.getStringExtra("num_vicious_cancels")
+        val currentCancel = intent.getIntExtra("num_vicious_cancels",-1)
 
         val etxtUserName: EditText = findViewById(R.id.textBoxUserName)
         val etxtUserBirthday: EditText = findViewById(R.id.textBoxUserBirthday)
@@ -52,6 +50,10 @@ class AdminUserAccountManagement : AppCompatActivity() {
         etxtUserEmail.setText(currentEmail)
         etxtUserAddress.setText(currentAddress)
         etxtUserCancel.setText(currentCancel)
+
+        Ban.setOnClickListener {
+
+        }
 
     }
 
