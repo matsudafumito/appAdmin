@@ -73,7 +73,7 @@
         app:layout_constraintTop_toBottomOf="@+id/errorDisplay"
         app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
+    <EditText
         android:id="@+id/textBoxUserName"
         android:layout_width="match_parent"
         android:layout_height="30dp"
@@ -89,7 +89,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
+    <EditText
         android:id="@+id/textBoxUserGender"
         android:layout_width="match_parent"
         android:layout_height="30dp"
@@ -119,7 +119,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textBoxUserName"
         app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
+    <EditText
         android:id="@+id/textBoxUserEmail"
         android:layout_width="match_parent"
         android:layout_height="30dp"
@@ -135,7 +135,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6"
         app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
+    <EditText
         android:id="@+id/textBoxUserAddress"
         android:layout_width="match_parent"
         android:layout_height="30dp"
@@ -165,7 +165,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textBoxUserBirthday"
         app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
+    <EditText
         android:id="@+id/textBoxUserBirthday"
         android:layout_width="match_parent"
         android:layout_height="30dp"
@@ -222,7 +222,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textBoxUserAddress"
         app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
+    <EditText
         android:id="@+id/txtNumViciousCancels"
         android:layout_width="match_parent"
         android:layout_height="30dp"
