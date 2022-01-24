@@ -9,7 +9,6 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import kotlinx.android.synthetic.main.activity_admin_withdrawal.*
 import org.json.JSONObject
 import java.lang.Exception
 import java.net.URI
@@ -31,7 +30,7 @@ class AdminWithdrawal : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         client.connect()
-        val token = Admin.globalToken
+        val token = Administrator.globalToken
         val etxtPassoword:EditText = findViewById(R.id.textBoxPassword)
         val buttonResign: Button = findViewById(R.id.buttonSubmit)
 
@@ -49,8 +48,8 @@ class AdminWithdrawal : AppCompatActivity() {
             } catch (ex: Exception) {
                 Log.i(javaClass.simpleName, "send failed")
                 Log.i(javaClass.simpleName, "$ex")
-                errorDisplay.text = "インターネットに接続されていません"
-                errorDisplay.visibility = View.VISIBLE
+                //errorDisplay.text = "インターネットに接続されていません"
+                //errorDisplay.visibility = View.VISIBLE
             }
         }
     }
