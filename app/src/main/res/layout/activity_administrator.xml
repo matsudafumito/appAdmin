@@ -4,21 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f5e131"
+    android:background="#ffffff00"
     tools:context=".Administrator">
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:textSize="30sp"
-        android:text="管理者HOME"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="16dp" />
 
-    <!-- bottom buttons -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="60dp"
@@ -43,12 +31,12 @@
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_marginEnd="1dp"
+            android:layout_marginRight="1dp"
             android:layout_weight="1"
             android:backgroundTint="#eb4242"
             android:padding="0dp"
             android:text="店舗検索"
-            android:textSize="15sp"
-            android:layout_marginRight="1dp" />
+            android:textSize="15sp" />
 
         <Button
             android:id="@+id/buttonSearchUser"
@@ -67,13 +55,38 @@
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_marginEnd="1dp"
+            android:layout_marginRight="1dp"
             android:layout_weight="1"
             android:backgroundTint="#eb4242"
             android:padding="0dp"
             android:text="設定"
-            android:textSize="15sp"
-            android:layout_marginRight="1dp" />
+            android:textSize="15sp" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="277dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="いらっしゃいませ！"
+        android:textColor="#444444"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="292dp"
+        android:layout_marginLeft="292dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#eb4242"
+        android:padding="0dp"
+        android:text="ログアウト"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

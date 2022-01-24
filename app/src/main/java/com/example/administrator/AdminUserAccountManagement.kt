@@ -52,6 +52,7 @@ class AdminUserAccountManagement : AppCompatActivity() {
 
         Ban.setOnClickListener {
 
+
         }
 
     }
