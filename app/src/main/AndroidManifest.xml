@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Administrator">
         <activity
+            android:name=".AdminShowAccountInfo"
+            android:exported="false" />
+        <activity
             android:name=".AdminRestaurantAccountSearch"
             android:exported="false" />
         <activity

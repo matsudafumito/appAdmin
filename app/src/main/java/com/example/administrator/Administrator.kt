@@ -76,7 +76,7 @@ class Administrator : AppCompatActivity() {
         }
 
         buttonToSetting.setOnClickListener {
-            val intent = Intent(this@Administrator, AdminAccountInfoChange::class.java)
+            val intent = Intent(this@Administrator, AdminShowAccountInfo::class.java)
             intent.putExtra("userName", globalUserName)
             intent.putExtra("token", globalToken)
             client.close(WsClient.NORMAL_CLOSURE)
