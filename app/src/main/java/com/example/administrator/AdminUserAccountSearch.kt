@@ -18,7 +18,7 @@ import kotlin.concurrent.schedule
 class AdminUserAccountSearch : AppCompatActivity() {
 
     companion object{
-        const val getUserInfoId: Int = 5
+        const val getUserInfoId: Int = 4
         var token = ""
     }
 
