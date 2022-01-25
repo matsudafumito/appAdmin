@@ -55,6 +55,7 @@ class Administrator : AppCompatActivity() {
         val buttonSearchUser: Button = findViewById(R.id.buttonSearchUser)
         val buttonLogout: Button = findViewById(R.id.buttonLogout)
 
+
         buttonSearchUser.setOnClickListener {
             val intent = Intent(this@Administrator, AdminUserAccountSearch::class.java)
             intent.putExtra("userName", globalUserName)
