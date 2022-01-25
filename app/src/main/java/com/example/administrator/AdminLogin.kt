@@ -82,6 +82,8 @@ class LoginWsClient(private val activity: Activity, uri: URI) : WsClient(uri){
                 Log.i(javaClass.simpleName, "token: $token")
                 Log.i(javaClass.simpleName, "expires in $expire")
 
+                Administrator.globalToken = token
+
                 this.close(NORMAL_CLOSURE)
                 activity.runOnUiThread{
                     val intent = Intent(activity, Administrator::class.java)
