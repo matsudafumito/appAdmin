@@ -23,7 +23,7 @@ class AdminRestaurantAccountSearch : AppCompatActivity() {
     }
 
     private val uri = WsClient.serverRemote
-    private var client = GetUserInfoWsClient(this, uri)
+    private var client = GetRestaurantInfoWsClient(this, uri)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +33,7 @@ class AdminRestaurantAccountSearch : AppCompatActivity() {
         //view
         val buttonHome : Button = findViewById(R.id.buttonHome)
         buttonHome.setOnClickListener {
-            val intent = Intent(this,AdminRegisterAccount::class.java)
+            val intent = Intent(this,Administrator::class.java)
             startActivity(intent)
         }
     }
@@ -91,7 +91,7 @@ class GetRestaurantInfoWsClient(private val activity: Activity, uri: URI) : WsCl
                 intent.putExtra("restaurantName", result.getString("restaurant_name"))
                 intent.putExtra("timeOpen", result.getString("time_open"))
                 intent.putExtra("timeClose", result.getString("time_close"))
-                intent.putExtra("holidaysJson", result.getString("holidays_json"))
+                intent.putExtra("holidays", result.getString("holidays"))
                 intent.putExtra("emailAddr", result.getString("email_addr"))
                 intent.putExtra("address" , result.getString("address"))
                 intent.putExtra("token", AdminUserAccountSearch.token)
