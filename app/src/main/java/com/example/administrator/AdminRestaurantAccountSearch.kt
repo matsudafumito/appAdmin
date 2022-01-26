@@ -86,7 +86,7 @@ class GetRestaurantInfoWsClient(private val activity: Activity, uri: URI) : WsCl
 
         if(resId == AdminRestaurantAccountSearch.getRestaurantInfoId){
             if(status == "success"){
-                val intent = Intent(activity, AdminUserAccountManagement::class.java) //画面遷移
+                val intent = Intent(activity, AdminRestaurantAccountManagement::class.java) //画面遷移
                 intent.putExtra("restaurantId", result.getInt("restaurant_id"))
                 intent.putExtra("restaurantName", result.getString("restaurant_name"))
                 intent.putExtra("timeOpen", result.getString("time_open"))
@@ -94,7 +94,7 @@ class GetRestaurantInfoWsClient(private val activity: Activity, uri: URI) : WsCl
                 intent.putExtra("holidays", result.getString("holidays"))
                 intent.putExtra("emailAddr", result.getString("email_addr"))
                 intent.putExtra("address" , result.getString("address"))
-                intent.putExtra("token", AdminUserAccountSearch.token)
+                intent.putExtra("token", AdminRestaurantAccountSearch.token)
                 activity.startActivity(intent)
                 this.close(WsClient.NORMAL_CLOSURE)
 
