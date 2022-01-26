@@ -11,12 +11,7 @@ import org.json.JSONObject
 import java.net.URI
 
 class Administrator : AppCompatActivity() {
-    private var user_id: Int = -1
     private var user_name: String = ""
-    private var birthday: String = ""
-    private var gender: String = ""
-    private var email_addr: String = ""
-    private var address: String = ""
 
     companion object {
         const val logoutReqId: Int = 3
@@ -33,19 +28,6 @@ class Administrator : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_administrator)
-    }
-
-    /**
-     * this method will fetch data about user information e.g. user_id, birthday etc
-     * this method will not concern the client data is arrived or not
-     */
-    private fun fetchClientInfo(client: AdminTopWsClient){
-        this.user_id = client.user_id
-        this.user_name = client.user_name
-        this.birthday = client.birthday
-        this.gender = client.gender
-        this.email_addr = client.email_addr
-        this.address = client.address
     }
 
     override fun onResume() {
@@ -73,17 +55,13 @@ class Administrator : AppCompatActivity() {
         val buttonSearchUser: Button = findViewById(R.id.buttonSearchUser)
         val buttonLogout: Button = findViewById(R.id.buttonLogout)
 
+
         buttonSearchUser.setOnClickListener {
-            if(client.isUserInfoArrived()){
-                this.fetchClientInfo(client)
-                val intent = Intent(this@Administrator, buttonSearchUser::class.java)
-                intent.putExtra("token", globalToken)
-                intent.putExtra("user_id", this.user_id)
-                startActivity(intent)
-                client.close(WsClient.NORMAL_CLOSURE)
-            }else{
-                Log.i(javaClass.simpleName, "data has not arrived yet")
-            }
+            val intent = Intent(this@Administrator, AdminUserAccountSearch::class.java)
+            intent.putExtra("userName", globalUserName)
+            intent.putExtra("token", globalToken)
+            client.close(WsClient.NORMAL_CLOSURE)
+            startActivity(intent)
         }
 
         buttonToHome.setOnClickListener {
@@ -91,11 +69,15 @@ class Administrator : AppCompatActivity() {
         }
 
         buttonToSearchRestaurant.setOnClickListener {
-            TODO("not yet implemented")
+            val intent = Intent(this@Administrator, AdminRestaurantAccountSearch::class.java)
+            intent.putExtra("userName", globalUserName)
+            intent.putExtra("token", globalToken)
+            client.close(WsClient.NORMAL_CLOSURE)
+            startActivity(intent)
         }
 
         buttonToSetting.setOnClickListener {
-            val intent = Intent(this@Administrator, AdminAccountInfoChange::class.java)
+            val intent = Intent(this@Administrator, AdminShowAccountInfo::class.java)
             intent.putExtra("userName", globalUserName)
             intent.putExtra("token", globalToken)
             client.close(WsClient.NORMAL_CLOSURE)
@@ -129,13 +111,7 @@ class Administrator : AppCompatActivity() {
 
     }
 
-    override fun onRestart() {
-        super.onRestart()
-        client = AdminTopWsClient(this, uri)
-    }
-
 }
-
 class AdminTopWsClient(private val activity: Activity, uri: URI) : WsClient(uri){
 
     var user_id: Int = -1

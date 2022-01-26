@@ -36,6 +36,7 @@ class AdminUserAccountManagement : AppCompatActivity() {
     }
     override fun onResume() {
         super.onResume()
+        client.connect()
         val Ban : Button = findViewById(R.id.Ban)
 
         val currentUserId = intent.getIntExtra("userId", 0)
@@ -68,7 +69,7 @@ class AdminUserAccountManagement : AppCompatActivity() {
             resignParams.put("token", token)
             resignParams.put("account_role", "user")
             resignParams.put("account_id", currentUserId)
-            val resignReq = client.createJsonrpcReq("resign",userResignReqId, resignParams)
+            val resignReq = client.createJsonrpcReq("resign/forced",userResignReqId, resignParams)
 
             try {
                 if (client.isClosed) {
@@ -104,12 +105,14 @@ class UserResignWsClient(private val activity: Activity, uri: URI) : WsClient(ur
 
         if (resId == AdminUserAccountManagement.userResignReqId){
             if(status == "success"){
-                val intent = Intent(activity, ShowResult::class.java)
-                intent.putExtra("message", "アカウント削除が完了しました")
-                intent.putExtra("transitionBtnMessage", "トップへ")
-                intent.putExtra("isBeforeLogin", true)
-                activity.startActivity(intent)
-                this.close(NORMAL_CLOSURE)
+                activity.runOnUiThread {
+                    val intent = Intent(activity, ShowResult::class.java)
+                    intent.putExtra("message", "アカウント削除が完了しました")
+                    intent.putExtra("transitionBtnMessage", "トップへ")
+                    intent.putExtra("isBeforeLogin", false)
+                    activity.startActivity(intent)
+                    this.close(NORMAL_CLOSURE)
+                }
 
             }else if(status == "error"){
                 activity.runOnUiThread {

@@ -5,20 +5,15 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Button
-import android.widget.EditText
 import android.widget.SearchView
-import android.widget.TextView
 import org.json.JSONObject
 import java.net.URI
-import java.util.*
-import kotlin.concurrent.schedule
 
 class AdminUserAccountSearch : AppCompatActivity() {
 
     companion object{
-        const val getUserInfoId: Int = 4
+        const val getUserInfoId: Int = 5
         var token = ""
     }
 
@@ -33,7 +28,7 @@ class AdminUserAccountSearch : AppCompatActivity() {
         //view
         val buttonHome : Button = findViewById(R.id.buttonHome)
         buttonHome.setOnClickListener {
-            val intent = Intent(this,AdminRegisterAccount::class.java)
+            val intent = Intent(this,Administrator::class.java)
             startActivity(intent)
         }
     }
