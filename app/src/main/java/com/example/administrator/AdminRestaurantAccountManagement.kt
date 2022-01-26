@@ -15,7 +15,7 @@ import java.net.URI
 
 class AdminRestaurantAccountManagement : AppCompatActivity() {
     companion object{
-        const val getRestaurantInfoId: Int = 5
+        const val restaurantResignReqId: Int = 5
     }
 
     private val uri = WsClient.serverRemote
@@ -38,6 +38,7 @@ class AdminRestaurantAccountManagement : AppCompatActivity() {
         super.onResume()
         val Ban : Button = findViewById(R.id.Ban)
 
+        val currentRestaurantId = intent.getIntExtra("restaurantId", 0)
         val currentRestaurantName = intent.getStringExtra("restaurantName")
         val currentTimeOpen = intent.getStringExtra("timeOpen")
         val currentTimeClose = intent.getStringExtra("timeClose")
@@ -46,7 +47,7 @@ class AdminRestaurantAccountManagement : AppCompatActivity() {
         val currentRestaurantAddress = intent.getStringExtra("address")
 
         val token = Administrator.globalToken
-        var restaurantName = Administrator.globalRestaurantName
+        var userName = Administrator.globalUserName
 
         val etxtRestaurantName: EditText = findViewById(R.id.textBoxRestaurantName)
         val etxtTimeOpen: EditText = findViewById(R.id.textBoxTimeOpen)
