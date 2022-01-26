@@ -94,6 +94,7 @@ class GetRestaurantInfoWsClient(private val activity: Activity, uri: URI) : WsCl
                 intent.putExtra("holidays", result.getString("holidays"))
                 intent.putExtra("emailAddr", result.getString("email_addr"))
                 intent.putExtra("address" , result.getString("address"))
+                intent.putExtra("features" , result.getString("features"))
                 intent.putExtra("token", AdminRestaurantAccountSearch.token)
                 activity.startActivity(intent)
                 this.close(WsClient.NORMAL_CLOSURE)

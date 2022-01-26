@@ -18,6 +18,14 @@
         <entry key="..\:/Users/mf214/AndroidStudioProjects/Administrator/app/src/main/res/layout/activity_main.xml" value="0.24010416666666667" />
         <entry key="..\:/Users/mf214/AndroidStudioProjects/Administrator/app/src/main/res/layout/activity_show_result.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/mf214/AndroidStudioProjects/Administrator/app/src/main/res/layout/activity_user_show_account_info.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/shins/SEtira/appAdmin/app/src/main/res/layout/activity_admin_account_info_change.xml" value="0.1" />
+        <entry key="..\:/Users/shins/SEtira/appAdmin/app/src/main/res/layout/activity_admin_login.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/shins/SEtira/appAdmin/app/src/main/res/layout/activity_admin_restaurant_account_management.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/shins/SEtira/appAdmin/app/src/main/res/layout/activity_admin_restaurant_account_search.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/shins/SEtira/appAdmin/app/src/main/res/layout/activity_admin_show_account_info.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/shins/SEtira/appAdmin/app/src/main/res/layout/activity_admin_user_account_management.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/shins/SEtira/appAdmin/app/src/main/res/layout/activity_admin_user_account_search.xml" value="0.16802536231884058" />
+        <entry key="..\:/Users/shins/SEtira/appAdmin/app/src/main/res/layout/activity_administrator.xml" value="0.17552083333333332" />
       </map>
     </option>
   </component>
