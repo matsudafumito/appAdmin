@@ -179,7 +179,7 @@
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:layout_marginTop="8dp"
-        android:text="定休日"
+        android:text="休日"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
