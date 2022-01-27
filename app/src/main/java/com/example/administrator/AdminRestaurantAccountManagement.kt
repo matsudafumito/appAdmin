@@ -45,6 +45,7 @@ class AdminRestaurantAccountManagement : AppCompatActivity() {
         val currentHolidays = intent.getStringExtra("holidays")
         val currentRestaurantEmail = intent.getStringExtra("emailAddr")
         val currentRestaurantAddress = intent.getStringExtra("address")
+        val currentFeatures = intent.getStringExtra("features")
 
         val token = Administrator.globalToken
         var userName = Administrator.globalUserName
@@ -55,6 +56,7 @@ class AdminRestaurantAccountManagement : AppCompatActivity() {
         val etxtHolidays: EditText = findViewById(R.id.textBoxHolidays)
         val etxtRestaurantEmail: EditText = findViewById(R.id.textBoxRestaurantEmail)
         val etxtRestaurantAddress: EditText = findViewById(R.id.textBoxRestaurantAddress)
+        val etxtFeatures: EditText = findViewById(R.id.textBoxRestaurantFeature)
 
         etxtRestaurantName.setText(currentRestaurantName)
         etxtTimeOpen.setText(currentTimeOpen)
@@ -62,6 +64,7 @@ class AdminRestaurantAccountManagement : AppCompatActivity() {
         etxtHolidays.setText(currentHolidays)
         etxtRestaurantEmail.setText(currentRestaurantEmail)
         etxtRestaurantAddress.setText(currentRestaurantAddress)
+        etxtFeatures.setText(currentFeatures)
 
         Ban.setOnClickListener {
             val resignParams = JSONObject()
