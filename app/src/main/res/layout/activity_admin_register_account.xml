@@ -91,9 +91,9 @@
         android:layout_marginTop="48dp"
         android:layout_marginEnd="106dp"
         android:layout_marginRight="106dp"
-        android:backgroundTint="#efefef"
+        android:backgroundTint="#ffff0000"
         android:text="アカウント登録"
-        android:textColor="#555555"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textBoxAdminPassword" />

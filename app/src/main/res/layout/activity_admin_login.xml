@@ -72,9 +72,9 @@
         android:layout_marginTop="65dp"
         android:layout_marginEnd="105dp"
         android:layout_marginRight="105dp"
-        android:backgroundTint="#efefef"
+        android:backgroundTint="#ffff0000"
         android:text="ログイン"
-        android:textColor="#555555"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textBoxPassword" />

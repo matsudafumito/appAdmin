@@ -35,7 +35,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        android:backgroundTint="#ffff0000"/>
 
     <Button
         android:id="@+id/nextlogin"
@@ -51,6 +52,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nextregister" />
+        app:layout_constraintTop_toBottomOf="@+id/nextregister"
+        android:backgroundTint="#ffff0000"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

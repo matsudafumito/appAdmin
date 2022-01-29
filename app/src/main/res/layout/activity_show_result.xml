@@ -44,9 +44,9 @@
         android:layout_marginTop="60dp"
         android:layout_marginEnd="106dp"
         android:layout_marginRight="106dp"
-        android:backgroundTint="#efefef"
+        android:backgroundTint="#ffff0000"
         android:text="TOP"
-        android:textColor="#555555"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/message" />
