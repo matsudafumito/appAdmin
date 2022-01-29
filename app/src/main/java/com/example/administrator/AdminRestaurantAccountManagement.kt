@@ -50,13 +50,13 @@ class AdminRestaurantAccountManagement : AppCompatActivity() {
         val token = Administrator.globalToken
         var userName = Administrator.globalUserName
 
-        val etxtRestaurantName: EditText = findViewById(R.id.textBoxRestaurantName)
-        val etxtTimeOpen: EditText = findViewById(R.id.textBoxTimeOpen)
-        val etxtTimeClose: EditText = findViewById(R.id.textBoxTimeClose)
-        val etxtHolidays: EditText = findViewById(R.id.textBoxHolidays)
-        val etxtRestaurantEmail: EditText = findViewById(R.id.textBoxRestaurantEmail)
-        val etxtRestaurantAddress: EditText = findViewById(R.id.textBoxRestaurantAddress)
-        val etxtFeatures: EditText = findViewById(R.id.textBoxRestaurantFeature)
+        val etxtRestaurantName: TextView = findViewById(R.id.textBoxRestaurantName)
+        val etxtTimeOpen: TextView = findViewById(R.id.textBoxTimeOpen)
+        val etxtTimeClose: TextView = findViewById(R.id.textBoxTimeClose)
+        val etxtHolidays: TextView = findViewById(R.id.textBoxHolidays)
+        val etxtRestaurantEmail: TextView = findViewById(R.id.textBoxRestaurantEmail)
+        val etxtRestaurantAddress: TextView = findViewById(R.id.textBoxRestaurantAddress)
+        val etxtFeatures: TextView = findViewById(R.id.textBoxRestaurantFeature)
 
         etxtRestaurantName.setText(currentRestaurantName)
         etxtTimeOpen.setText(currentTimeOpen)

@@ -50,12 +50,12 @@ class AdminUserAccountManagement : AppCompatActivity() {
         val token = Administrator.globalToken
         var userName = Administrator.globalUserName
 
-        val etxtUserName: EditText = findViewById(R.id.textBoxUserName)
-        val etxtUserBirthday: EditText = findViewById(R.id.textBoxUserBirthday)
-        val etxtUserGender: EditText = findViewById(R.id.textBoxUserGender)
-        val etxtUserEmail: EditText = findViewById(R.id.textBoxUserEmail)
-        val etxtUserAddress: EditText = findViewById(R.id.textBoxUserAddress)
-        val etxtUserCancel: EditText = findViewById(R.id.txtNumViciousCancels)
+        val etxtUserName: TextView = findViewById(R.id.textBoxUserName)
+        val etxtUserBirthday: TextView = findViewById(R.id.textBoxUserBirthday)
+        val etxtUserGender: TextView = findViewById(R.id.textBoxUserGender)
+        val etxtUserEmail: TextView = findViewById(R.id.textBoxUserEmail)
+        val etxtUserAddress: TextView = findViewById(R.id.textBoxUserAddress)
+        val etxtUserCancel: TextView = findViewById(R.id.txtNumViciousCancels)
 
         etxtUserName.setText(currentUserName)
         etxtUserBirthday.setText(currentBirthday)
