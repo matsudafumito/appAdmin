@@ -13,6 +13,7 @@ import org.json.JSONObject
 import java.net.URI
 
 class AdminRegisterAccount : AppCompatActivity() {
+
     companion object{
         const val registerReqId: Int = 2
     }
@@ -29,7 +30,7 @@ class AdminRegisterAccount : AppCompatActivity() {
         super.onResume()
         client.connect()
 
-        //edit text, name, password, and admin_password
+        //edit text, name and password
         val eTxtUserName: EditText = findViewById(R.id.textBoxUserName)
         val eTxtPassword: EditText = findViewById(R.id.textBoxPassword)
         val eTxtAdminPassword: EditText = findViewById(R.id.textBoxAdminPassword)
@@ -38,14 +39,13 @@ class AdminRegisterAccount : AppCompatActivity() {
         //when register button pushed
         val buttonRegister: Button = findViewById(R.id.buttonRegister)
         buttonRegister.setOnClickListener {
-            val registerRequest = JSONObject()
             val registerParams = JSONObject()
             val userName: String = eTxtUserName.text.toString()
             val password: String = eTxtPassword.text.toString()
             val adminPassword: String = eTxtAdminPassword.text.toString()
 
-            //if some field empty,
-            if(userName.isEmpty() || password.isEmpty() || adminPassword.isEmpty()){
+            //check params are inputted
+            if(userName.isEmpty() || password.isEmpty()){
                 when {
                     userName.isEmpty() -> {
                         errorDisplay.text = "ユーザネームが入力されていません"
@@ -54,7 +54,7 @@ class AdminRegisterAccount : AppCompatActivity() {
                         errorDisplay.text = "パスワードが入力されていません"
                     }
                     adminPassword.isEmpty() -> {
-                        errorDisplay.text = "admin_passwordが入力されていません"
+                        errorDisplay.text = "管理者パスワードが入力されていません"
                     }
                 }
                 errorDisplay.visibility = View.VISIBLE
@@ -64,21 +64,27 @@ class AdminRegisterAccount : AppCompatActivity() {
             registerParams.put("admin_name", userName)
             registerParams.put("password", password)
             registerParams.put("admin_password", adminPassword)
-
-            registerRequest.put("jsonrpc", "2.0")
-            registerRequest.put("id", registerReqId)
-            registerRequest.put("method", "register/admin")
-
-            registerRequest.put("params", registerParams)
+            val registerRequest = client.createJsonrpcReq("register/admin", registerReqId, registerParams)
 
             Log.i(javaClass.simpleName, "send register req")
             Log.i(javaClass.simpleName, registerRequest.toString())
-            client.send(registerRequest.toString())
+
+            try{
+                if(client.isClosed) {
+                    client.reconnect()
+                }
+                client.send(registerRequest.toString())
+            } catch (ex: Exception){
+                Log.i(javaClass.simpleName, "send failed $ex")
+                errorDisplay.visibility = View.VISIBLE
+                errorDisplay.text = "インターネットに接続されていません"
+            }
+
 
         }
     }
 
-    override fun onBackPressed() {
+    override fun onBackPressed(){
         super.onBackPressed()
         finish()
     }
@@ -104,7 +110,7 @@ class RegisterWsClient(private val activity: Activity, uri: URI) : WsClient(uri)
         val result: JSONObject = wholeMsg.getJSONObject("result")
         val status: String = result.getString("status")
 
-        //if message is about register/admin
+        //if message is about register/user
         if(resId == AdminRegisterAccount.registerReqId){
             //if success, transition to ShowResult page
             if(status == "success"){
@@ -116,16 +122,17 @@ class RegisterWsClient(private val activity: Activity, uri: URI) : WsClient(uri)
                 intent.putExtra("message", message)
                 intent.putExtra("transitionBtnMessage", transitionBtnMessage)
                 intent.putExtra("isBeforeLogin", isBeforeLogin)
-                activity.runOnUiThread{
-                    activity.startActivity(intent)
-                }
+
+                activity.startActivity(intent)
+                activity.finish()
+                this.close(NORMAL_CLOSURE)
 
                 //when error occurred with registration
             }else if(status == "error"){
                 val reason: String = result.getString("reason")
                 activity.runOnUiThread{
-                    if(reason == "You don't have permission to create admin account. admin_password is wrong."){
-                        errorDisplay.text = "admin_passwordが間違っています"
+                    if(reason == "user_name has already taken by other user"){
+                        errorDisplay.text = "ユーザネームが重複しています"
                     }else{
                         errorDisplay.text = reason
                     }

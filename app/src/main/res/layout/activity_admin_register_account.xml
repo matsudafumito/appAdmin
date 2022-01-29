@@ -35,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textTitle" />
 
     <EditText
-        android:id="@+id/textBoxAdminName"
+        android:id="@+id/textBoxUserName"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="32dp"
@@ -63,7 +63,7 @@
         android:textColorHint="#777777"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textBoxAdminName" />
+        app:layout_constraintTop_toBottomOf="@+id/textBoxUserName" />
 
     <EditText
         android:id="@+id/textBoxAdminPassword"

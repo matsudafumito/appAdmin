@@ -50,8 +50,8 @@ class AdminAccountInfoChange : AppCompatActivity() {
         val etxtUserEmail: EditText = findViewById(R.id.textBoxUserEmail)
         val etxtUserAddress: EditText = findViewById(R.id.textBoxUserAddress)
         val buttonSubmit: Button = findViewById(R.id.buttonSubmit)
-        val buttonResign: Button = findViewById(R.id.buttonResign)
         val errorDisplay: TextView = findViewById(R.id.errorDisplay)
+        val buttonResign : Button = findViewById(R.id.buttonResign)
 
         etxtUserName.setText(currentUserName)
         etxtUserBirthday.setText(currentBirthday)
@@ -86,10 +86,8 @@ class AdminAccountInfoChange : AppCompatActivity() {
                 errorDisplay.visibility = View.VISIBLE
             }
         }
-
         buttonResign.setOnClickListener {
-            val intent = Intent(this@AdminAccountInfoChange, AdminWithdrawal::class.java)
-            intent.putExtra("token", token)
+            val intent = Intent(this,AdminWithdrawal::class.java)
             client.close(WsClient.NORMAL_CLOSURE)
             startActivity(intent)
         }
