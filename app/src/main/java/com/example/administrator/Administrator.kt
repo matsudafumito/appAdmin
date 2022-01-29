@@ -11,7 +11,12 @@ import org.json.JSONObject
 import java.net.URI
 
 class Administrator : AppCompatActivity() {
+    private var user_id: Int = -1
     private var user_name: String = ""
+    private var birthday: String = ""
+    private var gender: String = ""
+    private var email_addr: String = ""
+    private var address: String = ""
 
     companion object {
         const val logoutReqId: Int = 3
@@ -29,6 +34,18 @@ class Administrator : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_administrator)
     }
+    /**
+     * this method will fetch data about user information e.g. user_id, birthday etc
+     * this method will not concern the client data is arrived or not
+     */
+    private fun fetchClientInfo(client: AdminTopWsClient){
+        this.user_id = client.user_id
+        this.user_name = client.user_name
+        this.birthday = client.birthday
+        this.gender = client.gender
+        this.email_addr = client.email_addr
+        this.address = client.address
+    }
 
     override fun onResume() {
         super.onResume()
@@ -40,14 +57,14 @@ class Administrator : AppCompatActivity() {
                 //wait until websocket open
             }
             //the connection openings is guaranteed -> attach no error handler
-            client.sendReqGetUserInfoByName(globalToken, this.user_name)
+            client.sendReqGetUserInfoByName(Administrator.globalToken, Administrator.globalUserName)
             return@Runnable
         }
         Thread( getUserInfo ).start()
 
         Log.i(javaClass.simpleName, "token recved $globalToken")
         Log.i(javaClass.simpleName, "token expiry $globalTokenExpiry")
-        Log.i(javaClass.simpleName, "userName: $globalUserName")
+        Log.i(javaClass.simpleName, "userName $globalUserName")
 
         val buttonToHome: Button = findViewById(R.id.buttonHome)
         val buttonToSearchRestaurant: Button = findViewById(R.id.buttonSearchRestaurant)
@@ -77,11 +94,18 @@ class Administrator : AppCompatActivity() {
         }
 
         buttonToSetting.setOnClickListener {
-            val intent = Intent(this@Administrator, AdminShowAccountInfo::class.java)
-            intent.putExtra("userName", globalUserName)
-            intent.putExtra("token", globalToken)
-            client.close(WsClient.NORMAL_CLOSURE)
-            startActivity(intent)
+            if(client.isUserInfoArrived()){
+                this.fetchClientInfo(client)
+                val intent = Intent(this@Administrator, AdminShowAccountInfo::class.java)
+                intent.putExtra("userName", Administrator.globalUserName)
+                intent.putExtra("token", Administrator.globalToken)
+                intent.putExtra("birthday", this.birthday)
+                intent.putExtra("gender", this.gender)
+                intent.putExtra("email", this.email_addr)
+                intent.putExtra("address", this.address)
+                client.close(WsClient.NORMAL_CLOSURE)
+                startActivity(intent)
+            }
         }
 
         buttonLogout.setOnClickListener {
@@ -134,10 +158,10 @@ class AdminTopWsClient(private val activity: Activity, uri: URI) : WsClient(uri)
     fun sendReqGetUserInfoByName(token: String, clientName: String){
         Log.i(javaClass.simpleName, "send request to get user information")
         val params = JSONObject()
-        params.put("searchBy", "user_name")
-        params.put("user_name", Administrator.globalUserName)
+        params.put("searchBy", "admin_name")
+        params.put("admin_name", Administrator.globalUserName)
         params.put("token", Administrator.globalToken)
-        val request = this.createJsonrpcReq("getInfo/user/basic", Administrator.getAdminInfoId, params)
+        val request = this.createJsonrpcReq("getInfo/admin/basic", Administrator.getAdminInfoId, params)
         this.send(request.toString())
     }
 
@@ -183,13 +207,13 @@ class AdminTopWsClient(private val activity: Activity, uri: URI) : WsClient(uri)
             //if msg is about getInfo/user/basic
         }else if(resId == Administrator.getAdminInfoId){
             if(status == "success"){
-                this.user_id = result.getInt("user_id")
-                this.user_name = result.getString("user_name")
+                this.user_id = result.getInt("admin_id")
+                this.user_name = result.getString("admin_name")
                 this.birthday = result.getString("birthday")
                 this.gender = result.getString("gender")
                 this.email_addr = result.getString("email_addr")
                 this.address = result.getString("address")
-                Administrator.globalAdminId = result.getInt("user_id")
+                Administrator.globalAdminId = result.getInt("admin_id")
 
             }else if(status == "error"){
                 Log.i(javaClass.simpleName, "getInfo failed")

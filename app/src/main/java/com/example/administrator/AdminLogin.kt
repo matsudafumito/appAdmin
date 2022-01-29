@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -14,6 +15,7 @@ import org.json.JSONObject
 class AdminLogin : AppCompatActivity() {
     companion object{
         const val loginReqId: Int = 1
+        var loginUserName: String = ""
     }
 
     private val uri = WsClient.serverRemote
@@ -39,6 +41,8 @@ class AdminLogin : AppCompatActivity() {
             val loginParams = JSONObject()
             val userName: String = textBoxUserName.text.toString()
             val password: String = textBoxPassword.text.toString()
+            loginUserName = userName
+
             loginParams.put("user_name", userName)
             loginParams.put("password", password)
             loginParams.put("role", "admin")
@@ -73,6 +77,7 @@ class LoginWsClient(private val activity: Activity, uri: URI) : WsClient(uri){
         val resId: Int = wholeMsg.getInt("id")
         val result: JSONObject = wholeMsg.getJSONObject("result")
         val status: String = result.getString("status")
+
         //if message is about login
         if(resId == AdminLogin.loginReqId){
             if(status == "success"){
@@ -82,13 +87,12 @@ class LoginWsClient(private val activity: Activity, uri: URI) : WsClient(uri){
                 Log.i(javaClass.simpleName, "token: $token")
                 Log.i(javaClass.simpleName, "expires in $expire")
 
-                Administrator.globalToken = token
-
                 this.close(NORMAL_CLOSURE)
                 activity.runOnUiThread{
                     val intent = Intent(activity, Administrator::class.java)
-                    intent.putExtra("token", token)
-                    intent.putExtra("expire", expire)
+                    Administrator.globalToken = token
+                    Administrator.globalUserName = AdminLogin.loginUserName
+                    Administrator.globalTokenExpiry = expire
                     activity.startActivity(intent)
                 }
 
