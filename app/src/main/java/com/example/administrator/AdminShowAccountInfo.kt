@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import org.json.JSONObject
 import java.lang.Exception
@@ -27,6 +28,12 @@ class AdminShowAccountInfo : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_show_account_info)
         client.connect()
+
+        val buttonHome : Button = findViewById(R.id.buttonHome)
+        buttonHome.setOnClickListener {
+            val intent = Intent(this,Administrator::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onResume() {
