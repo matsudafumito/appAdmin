@@ -20,37 +20,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:layout_width="322dp"
-        android:layout_height="match_parent"
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
         android:layout_marginTop="92dp"
-        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:text="完了しました。"
+        android:textAlignment="center"
+        android:textColor="#555555"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-
-        <TextView
-            android:id="@+id/message"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="150dp"
-            android:text="Message"
-            android:textAlignment="center"
-            android:textColor="#555555"
-            android:gravity="center_horizontal" />
-
-        <Button
-            android:id="@+id/transitionButton"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:backgroundTint="#efefef"
-            android:text="transition"
-            android:textColor="#555555" />
-
-    </LinearLayout>
+    <Button
+        android:id="@+id/transitionButton"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="105dp"
+        android:layout_marginLeft="105dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="106dp"
+        android:layout_marginRight="106dp"
+        android:backgroundTint="#efefef"
+        android:text="TOP"
+        android:textColor="#555555"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/message" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

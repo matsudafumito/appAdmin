@@ -19,74 +19,82 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="16dp" />
 
-    <LinearLayout
-        android:layout_width="322dp"
-        android:layout_height="663dp"
-        android:layout_marginTop="68dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/errorDisplay"
+        android:layout_width="match_parent"
+        android:layout_height="23dp"
+        android:layout_marginTop="24dp"
+        android:text="ユーザ名とパスワードが一致しません"
+        android:textColor="#ff0000"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textTitle" />
 
+    <EditText
+        android:id="@+id/textBoxUserName"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:background="#efefef"
+        android:ems="10"
+        android:hint="ユーザーネーム"
+        android:inputType="textPersonName"
+        android:textColor="#444444"
+        android:textColorHint="#777777"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/errorDisplay" />
 
-        <TextView
-            android:id="@+id/errorDisplay"
-            android:layout_width="match_parent"
-            android:layout_height="23dp"
-            android:layout_marginTop="50dp"
-            android:text="ユーザ名とパスワードが一致しません"
-            android:textColor="#ff0000"
-            android:visibility="invisible" />
+    <EditText
+        android:id="@+id/textBoxPassword"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="24dp"
+        android:background="#efefef"
+        android:baselineAligned="false"
+        android:ems="10"
+        android:hint="パスワード"
+        android:inputType="textPassword"
+        android:textColor="#444444"
+        android:textColorHint="#777777"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textBoxUserName" />
 
-        <EditText
-            android:id="@+id/textBoxUserName"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="5dp"
-            android:background="#efefef"
-            android:ems="10"
-            android:hint="ユーザーネーム"
-            android:inputType="textPersonName"
-            android:textColor="#444444"
-            android:textColorHint="#777777" />
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="105dp"
+        android:layout_marginLeft="105dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginEnd="105dp"
+        android:layout_marginRight="105dp"
+        android:backgroundTint="#efefef"
+        android:text="ログイン"
+        android:textColor="#555555"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textBoxPassword" />
 
-        <EditText
-            android:id="@+id/textBoxPassword"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="80dp"
-            android:background="#efefef"
-            android:baselineAligned="false"
-            android:ems="10"
-            android:hint="パスワード"
-            android:inputType="textPassword"
-            android:textColor="#444444"
-            android:textColorHint="#777777" />
-
-        <Button
-            android:id="@+id/buttonLogin"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:backgroundTint="#efefef"
-            android:text="ログイン"
-            android:textColor="#555555" />
-
-        <Button
-            android:id="@+id/buttonAccount"
-            android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:backgroundTint="#efefef"
-            android:text="アカウント登録はこちら"
-            android:textColor="#555555"
-            android:textSize="10dp" />
-
-    </LinearLayout>
-
+    <Button
+        android:id="@+id/buttonAccount"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="105dp"
+        android:layout_marginLeft="105dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="105dp"
+        android:layout_marginRight="105dp"
+        android:backgroundTint="#efefef"
+        android:text="アカウント登録はこちら"
+        android:textColor="#555555"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
