@@ -62,12 +62,13 @@ class AdminAccountInfoChange : AppCompatActivity() {
         buttonSubmit.setOnClickListener {
 
             val params = JSONObject()
-            params.put("user_name", etxtUserName.text.toString())
+
+            params.put("token", token)
+            params.put("admin_name", etxtUserName.text.toString())
             params.put("birthday", etxtUserBirthday.text.toString())
             params.put("gender", etxtUserGender.text.toString())
             params.put("email_addr", etxtUserEmail.text.toString())
             params.put("address", etxtUserAddress.text.toString())
-            params.put("token", token)
 
             userName = etxtUserName.text.toString()
 
